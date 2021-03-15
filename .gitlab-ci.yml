@@ -1,0 +1,8 @@
+stages:
+  - build
+
+build-image:
+  stage: build
+  script:
+    - docker build . -t harbor.tilyes.eu/eugis/br-reading-datasource:latest
+    - docker push harbor.tilyes.eu/eugis/br-reading-datasource:latest
