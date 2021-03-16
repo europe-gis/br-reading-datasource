@@ -1,8 +1,17 @@
 stages:
   - build
 
+variables:
+  ROBOT_ACCOUNT: $ROBOT_ACCOUNT
+  ROBOT_ACCOUNT_TOKEN: $ROBOT_ACCOUNT_TOKEN
+
+before_script:
+  - docker info
+  - docker login harbor.tilyes.eu -u $ROBOT_ACCOUNT -p $ROBOT_ACCOUNT_TOKEN
+
 build-image:
   stage: build
+  image: docker:19.03.12
   script:
     - docker build . -t harbor.tilyes.eu/eugis/br-reading-datasource:latest
     - docker push harbor.tilyes.eu/eugis/br-reading-datasource:latest
