@@ -8,8 +8,6 @@ variables:
   DOCKER_TLS_CERTDIR: "/certs"
   DOCKER_TLS_VERIFY: 1
   DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
-  ROBOT_ACCOUNT: $ROBOT_ACCOUNT
-  ROBOT_ACCOUNT_TOKEN: $ROBOT_ACCOUNT_TOKEN
 
 services:
   - docker:19.03.13-dind
@@ -23,7 +21,6 @@ before_script:
         sleep 5s
     done
   - docker info
-  - docker login harbor.tilyes.eu -u $ROBOT_ACCOUNT -p $ROBOT_ACCOUNT_TOKEN
 
 
 build-image:
