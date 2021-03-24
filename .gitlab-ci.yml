@@ -29,5 +29,6 @@ build-image:
   stage: build
   image: docker:19.03.12
   script:
+    - docker pull harbor.tilyes.eu/eugis/br-reading-datasource:latest || true
     - docker build . -t harbor.tilyes.eu/eugis/br-reading-datasource:latest
     - docker push harbor.tilyes.eu/eugis/br-reading-datasource:latest
